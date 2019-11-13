@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = 3;
+        var b = 5;
+        var max;
+        if (a > b) {
+            max = a;
+        }
+        else {
+            max = b;
+        }
+        console.log(max);
+    </script>   
+
+    <script>
+        <!--COMPARING TRUTHY/FALSY VALUES-->
+        console.log(1 == '1'); // true
+        console.log(1 === '1') // false
+        var y = null;
+        var z;
+        console.log('y == z: ' + (y == z));
+        console.log('y === z: ' + (y === z));
+        console.log("5 < '20': " + (5 < '20')); // true
+        console.log("5 > 'alligator': " + (5 > 'alligator')); // false -> Nan
+        var cooper = { age: 11 };
+        var rex = { age: 11 };
+        console.log(cooper == rex);
+        var myDog = rex;
+        console.log(myDog == rex);
+    </script>
+
+    <p id="forLoop"></p>
+    <p id="whileLoop"></p>
+    <p id="doWhileLoop"></p>
+
+    <script>
+        <!--LOOPS-->
+
+        <!--FOR LOOP-->
+        var cars = ['BMW', 'Audi', 'Ford'];
+        var text1 = "";
+        var i;
+        for (i = 0; i < cars.length; i++) {
+            text1 += cars[i] + '\n';
+        }
+        document.getElementById("forLoop").innerText = text1;
+
+        <!--WHILE LOOP-->
+        var text2 = "";
+        var o = 0;
+        while (o < 10) {
+            text2 += "The number is " + o + "\n";       
+            o++;
+        }
+        document.getElementById("whileLoop").innerText = text2;
+
+        <!--DO WHILE LOOP-->
+        var text3 = '';
+        var e = 0;
+        do {
+            text3 += "Do while loop " + e + "\n";
+            e++;
+        }
+        while (e < 10);
+        
+        document.getElementById("doWhileLoop").innerText = text3;
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    
+    <p id='is_even'></p>
+    <p id='squares'></p>
+
+    <script>
+        var nums = [4, 8, 12, 2];
+
+        function print(n) {
+            console.log(n);
+        }
+        nums.forEach(print);
+
+        function isEven(n) {
+            return n % 2 == 0;
+        }
+        var result = nums.every(isEven);
+        document.getElementById('is_even').innerText = 'All nums are even: ' + result;
+
+        function square(n) {
+            return n * n;
+        }
+        var squares = nums.map(square);
+        document.getElementById('squares').innerText = 'All nums squared: ' + squares;
+
+        <!--cannot change a primitive within a function because only the value is passed-->
+        function tryToChange(x) {
+            x += 3;
+        }
+        var y = 2;
+        tryToChange(y);
+        console.log('y: '+ y);
+
+        <!--objects are passed by reference and can be changed by functions-->
+        function changeObject(obj) {
+            obj.age += 20;
+        }
+        var p = {age: 20};
+        changeObject(p);
+        console.log('p.age: ' + p.age);
+
+        <!--functions are objects. Variables can hold functions:-->
+        var add = function (a, b) {
+            return a + b;
+        };
+        console.log(add(3, 5));
+
+        var johnDoe = {
+            name: 'John Doe',
+            age: '34',
+            greeting: function () {
+                return 'Hello there!';
+            }
+        };
+        console.log(johnDoe.greeting());
+
+        <!--CREATING A PROTOTYPE-->
+        function Person (name, age) {
+            this.name = name;
+            this.age = age;
+            this.greeting = function () {
+                return 'Hello, My name is ' + this.name;
+            }
+        }
+        var johnDoe = new Person('John Doe', 32);
+        console.log(johnDoe.greeting())
+        var janeDoe = new Person('Jane Doe', 28);
+        console.log(janeDoe.greeting())
+
+        <!--INHERIT FROM PROTOTYPE-->
+        function Student (name, age, school) {
+            this.__proto__ = new Person(name, age);
+            this.school = school;
+        }
+        var sarahBrown = new Student('Sarah Brown', 17, 'PennX');
+        console.log(sarahBrown.greeting())
+        console.log(sarahBrown.school)
+        console.log(sarahBrown instanceof Person)
+
+        <!--POSSIBLE TO CHANGE PROTOTYPE-->
+        Person.prototype.planet = 'Earth'
+        console.log(sarahBrown.planet)
+    </script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello Javascript</title>
+    </head>
+
+    <body>
+        <h1>First html with javascript</h1>
+
+        <p>
+            <script>
+                <!--VARS-->
+                document.write('The current date and time is ');
+                var time = new Date();
+                document.write(time);
+           </script>
+        </p>
+
+        <br>
+        <p>
+            <script>
+                var name = 'Arnau';
+                document.write(name);
+            </script>
+        </p>
+
+        <br>
+        <p>
+            <script>
+                var name = 'Arnau';
+                console.log(name);
+                name = 'Pedro';
+                console.log(name);
+            </script>
+        </p>
+
+        <br>
+        <p>
+            <script>
+                var age = 39;
+                alert(age);
+            </script>
+        </p>
+
+        <br>
+        <p>
+            <script>
+                <!--STRINGS-->
+                var lastName = 'Vidal';
+                var fullName = name.concat(' ', lastName);
+                document.write(fullName);
+            </script>
+        </p>
+
+        <br>
+        <p>
+            <script>
+                var greeting = 'Hello, ' + fullName;
+                document.write(greeting);
+                console.log(greeting.toUpperCase())
+                console.log(greeting.toLowerCase())
+                console.log(greeting.length)
+            </script>
+        </p>
+
+        <br>
+        <p>
+            <script>
+                var spam = null;
+                var bacon;
+                document.write(spam + '\n');
+
+                document.write(bacon);
+            </script>
+        </p>
+
+        <br>
+        <p>
+            <script>
+                <!--ARRAYS-->
+                var spam = ['hello', 9, false];
+                var number = spam[1];
+                document.write(number);
+                spam[2] = true
+                document.write(spam[2]);
+                console.log(spam.length);
+                console.log(spam[4]);
+                spam[5] = 'bye';
+                spam[-5] = 'eyb';
+                console.log(spam);
+                spam.push('train');
+                spam.unshift('car');
+                document.write("\nSpam after pushr('train') and unshift('car'): \n");
+                document.write(spam);
+                spam.pop();
+                spam.shift();
+                document.write('\nSpam after pop() and shift(): \n');
+                document.write(spam);
+            </script>
+        </p>
+
+        <br>
+        <p>
+            <script>
+                <!--OBJECTS-->
+                var person = {
+                    name: 'John Doe',
+                    age: 25,
+                    isMale: true,
+                    personality: ['patient', 'loyal', 'happy'],
+                    company: {name: 'edX', id: 2984}
+                }
+                console.log(person.age);
+                console.log(person['company'].id);
+
+                var pet = {
+                    name: 'Cooper',
+                    type: 'dog',
+                }
+                console.log(pet.age);
+                pet.age = 11;
+                console.log(pet.age);
+                pet['status'] = 'agressive';
+                console.log(pet.status);
+            </script>
+        </p>
+
+    </body>
+</html>
