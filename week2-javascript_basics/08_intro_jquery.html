@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery-3.4.1.js"></script>
+</head>
+<body>
+    <button id="clickMe">Click Me!</button> 
+    <p>
+    You've clicked the button <span id="numClicks">0 times</span>.
+    <script>
+        // COUNT CLICKS
+
+        let clicks = 0;
+
+        function clickHandler() {
+            clicks++;
+            let numClicksSpan = $('#numClicks');
+            if (clicks == 1)
+                numClicksSpan.html('once');
+            else
+                numClicksSpan.html(clicks + ' times');
+        }
+
+        $('#clickMe').click(clickHandler);
+    </script>
+    <br>
+    <hr>
+    <input id="itemField"></input>
+    <p>
+
+    <ul>
+        <span id="list"></span>
+    </ul>
+
+    <script>
+        // Append items to a list
+        function keyPressHandler(e) {
+            if ((e.keyCode == 13) && ($("#itemField").val())){
+                $('#list').append('<li>' + $('#itemField').val() + '</li>');
+                $('#itemField').val('');
+            }
+        }
+    
+    $('#itemField').keyup(keyPressHandler);
+    </script>
+
+    <hr>
+    <ul>
+        <li>dog</li>
+        <li>cat</li>
+        <li>elephant</li>
+        <li>bear</li>
+    </ul>
+    <script>
+        // Select 'this'
+        $("li").click(function(){
+            $(this).css('font-weight', 'bold');
+        });
+    </script>
+
+
+
+    
+</body>
+</html>

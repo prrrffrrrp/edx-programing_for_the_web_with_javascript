@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery-3.4.1.js"></script>
+</head>
+<body>
+    <ul>
+        <li>dog</li>
+        <li>cat</li>
+        <li>mouse</li>
+        <li>bear</li>
+    </ul> 
+
+    <script>
+    $("li").hover(
+        function() {
+            $(this).css('color', 'red');
+            $(this).css('font-size', '120%');
+        },
+        function() {
+            $(this).css('color', 'black');
+            $(this).css('font-size', '100%');
+    });
+    </script>
+
+    <hr>
+    <ul class='second'>
+        <li>dog</li>
+        <li>cat</li>
+        <li>mouse</li>
+        <li>bear</li>
+    </ul> 
+    <script>
+        // Combine multiple callback functions using the .on event
+        $('ul.second').find('li').on({
+            mouseenter: function() {
+                $(this).css('color', 'red');
+                $(this).css('font-size', '120%');
+            },
+            mouseleave: function() {
+                $(this).css('color', 'black');
+                $(this).css('font-size', '100%');
+            },
+            click: function() {
+                $(this).css('background-color', 'yellow');
+            }
+        });
+    </script>
+
+    <hr>
+    <ul class="highlight">
+        <li>dog</li>
+        <li>cat</li>
+        <li>mouse</li>
+        <li>bear</li>
+    </ul> 
+
+    <ul>
+        <li>canary</li>
+        <li>eagle</li>
+    </ul>
+
+    <script>
+        // Combine multiple callback functions using the .on event
+        $('ul.highlight').find('li').on({
+            mouseenter: function() {
+                $(this).css('color', 'red');
+                $(this).css('font-size', '120%');
+            },
+            mouseleave: function() {
+                $(this).css('color', 'black');
+                $(this).css('font-size', '100%');
+            },
+            click: function() {
+                $(this).css('background-color', 'orange');
+            }
+        });
+    </script>
+ 
+</body>
+</html>

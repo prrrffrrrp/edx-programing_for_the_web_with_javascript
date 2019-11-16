@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        The current date/time is <span id="dateTime"> </span>
+    </div>
+
+    <script>
+        let dateTimeField = document.getElementById('dateTime');
+        dateTimeField.innerHTML = new Date();
+    </script>
+
+    <div>
+        You have visited this page <span id="report"> </span> times.
+    </div>
+
+    <script>
+        <!--WITH A SIMPLE VAR-->
+        let timesVisited = 0;
+        if (localStorage.timesVisited) {
+            timesVisited = parseInt(localStorage.timesVisited);
+        }
+        timesVisited += 1;
+        localStorage.setItem('timesVisited', timesVisited);
+
+        let report = document.getElementById('report');
+        report.innerHTML = timesVisited;
+
+        if (timesVisited > 10)
+            report.style.backgroundColor = 'red';
+    </script>
+    
+</body>
+</html>
