@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+</head>
+<body>
+  <div id='container1'></div>
+
+  <script type='text/jsx'>
+
+    class Counter extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {count: 0};
+      }
+
+      incrementCount() {
+        this.setState( { count: this.state.count + 1 } );
+      }
+
+      render() {
+        return (
+          <div>
+          <p>Count: {this.state.count}</p>
+          <button type='button' onClick={this.incrementCount.bind(this)}> Increment
+          </button>
+          </div>
+        );
+      }
+    };
+
+    ReactDOM.render(
+    <div><Counter /></div>,
+    document.getElementById('container1')
+    );
+    
+  </script>
+
+  <hr>
+
+  <div id='container2'></div>
+
+  <script type='text/jsx'>
+
+    class LikeButton extends React.Component {
+      constructor (props) {
+        super(props);
+        this.state = {liked: false};
+      }
+      toggle() {
+        this.setState( {liked: !this.state.liked} );
+      }
+
+      render() {
+        var name = this.props.name;
+        var txt = this.state.liked ? 'Unlike' : 'Like';
+        var myColor = this.state.liked ? 'red' : 'black';
+        var weight = this.state.liked ? 'bold' : 'normal';
+
+        return(
+          <p>
+          <span style={{ color:myColor, fontWeight:weight }}>
+          {name}
+          </span>
+          <span onClick={this.toggle.bind(this)}>{'\ud83d\udc4d' + txt}</span>
+          </p>
+        );
+      
+      }
+    };
+    
+    ReactDOM.render(
+    <div>
+    <LikeButton name='Java' />
+    <LikeButton name='Javascript' />
+    </div>,
+    document.getElementById('container2')
+    );
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+  <div id='container1'></div> // FILTERED LIST
+  
+  <script type="text/jsx">
+    class FilteredList extends React.Component {
+      constructor(props) {
+        super(props);
+        let allItems = ['Anteater', 'Bear', 'Cat', 'Dog', 'Elephant'];
+        this.state = { initialItems: allItems,
+                       currentItems: allItems };
+      }
+
+      filterList(input) {
+        let updatedList = this.state.initialItems;
+        updatedList = updatedList.filter(item => {
+          return item.search(input.target.value) !== -1;
+          });
+        this.setState( { currentItems: updatedList } );
+      }
+
+      render(){
+        return (
+          <div className="filter-list">
+            <h3>FILTERED LIST</h3>
+            <input type="text" placeholder="Filter" onChange={ this.filterList.bind(this) }/>
+            <List items={ this.state.currentItems }/>
+          </div>
+        );
+      }
+    };
+
+    class List extends React.Component {
+      render() {
+        return (
+          <ul> { this.props.items.map(item => {
+                return <li key={item}>{item}</li> }) } 
+          </ul>
+        )
+      }
+    };
+
+    ReactDOM.render(<FilteredList/>, document.getElementById('container1'));
+  </script>
+
+  <br>
+  <hr>
+  <div id='container2'></div> // TO-DO LIST
+
+  <script type="text/jsx">
+    class TodoApp extends React.Component {
+      constructor(props) {
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = {items: [], text: '', id: 0};
+      }
+
+      render() {
+        return (
+          <div>
+            <h3>TO-DO LIST</h3>
+            <TodoList items={ this.state.items } />
+            <form onSubmit={this.handleSubmit}>
+              <input onChange={this.handleChange} value={this.state.text} />
+              <button>Add</button>
+            </form>
+          </div>
+        );
+      }
+
+      handleChange(e) {
+        this.setState({text: e.target.value});
+      }
+
+      handleSubmit(e) {
+        e.preventDefault(); // prevent from refreshing the page when submitting form
+        let newItem = {
+          text: this.state.text,
+          id: this.state.id
+        };
+        this.setState({
+          items: this.state.items.concat(newItem),
+          text: '',
+          id: this.state.id + 1
+        });
+      }
+    } 
+
+    class TodoList extends React.Component {
+      render() {
+        return (
+          <ul>
+            {this.props.items.map(item => {
+              return <TodoItem id={item.id} text={item.text}/>
+            })}
+          </ul>
+        );
+      }
+    }
+
+    class TodoItem extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = { amDone: true };
+      }
+
+      handleClick() {
+        this.setState({ amDone: !this.state.amDone });
+      }
+
+      render() {
+        let line = this.state.amDone ? 'none' : 'line-through';
+        return (
+          <li key={this.props.id} onClick={this.handleClick.bind(this)} style={{textDecoration:line}}>{this.props.text}</li>
+        );
+      }
+    }
+
+    ReactDOM.render(<TodoApp/>, document.getElementById('container2'));
+  </script>
+  
+</body>
+</html>

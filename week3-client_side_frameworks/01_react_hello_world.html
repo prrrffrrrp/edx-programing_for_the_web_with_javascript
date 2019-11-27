@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+  <div id='container1'></div> 
+  <script type='text/jsx'>
+    ReactDOM.render(
+    <h1> Hello, React! </h1>,
+    document.getElementById('container1')
+    );
+  </script>
+
+  <div id='container2'></div>
+  <script type='text/jsx'>
+    class TimesViewed extends React.Component {
+      constructor(props) {
+        super(props);
+        var timesViewed = 0;
+        if (localStorage.timesViewed) {
+          timesViewed = localStorage.timesViewed;
+        }
+        timesViewed++;
+        this.state = { numViews: timesViewed };
+        localStorage.timesViewed = timesViewed;
+      }
+      render() {
+      return <b>{this.state.numViews}</b>;
+      }
+    }
+
+    ReactDOM.render(
+    <p>Times viewed: <TimesViewed /></p>,
+    document.getElementById('container2')
+    );
+  </script>
+
+</body>
+</html>
